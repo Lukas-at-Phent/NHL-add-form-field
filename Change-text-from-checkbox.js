@@ -1,5 +1,5 @@
 function handleChange() {
-  const checkbox2 = document.getElementById('checkbox-per-dos');
+  const checkbox2 = document.document.getElementById('checkbox-per-dos');
   const textBlock = document.querySelector('.span-text-target');
 
   if (checkbox2.checked) {
@@ -8,3 +8,6 @@ function handleChange() {
     textBlock.innerText = 'Antal kapslar';
   }
 }
+
+const checkbox2 = document.document.getElementById('checkbox-per-dos');
+checkbox2.addEventListener('click', handleChange);
