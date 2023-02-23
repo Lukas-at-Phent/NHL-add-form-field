@@ -1,6 +1,6 @@
 const form = document.querySelector('Form-block-logic');
-const addButton = document.querySelector('.new-field-button');
-const outerWrapper = document.querySelector('.new-form-field-wrapper');
+const addButton = document.querySelectorAll('.new-field-button');
+const outerWrapper = document.querySelectorAll('.new-form-field-wrapper');
 const inputClasses = ['form-input-shadow', 'w-input'];
 const placeholders = ['Substans', 'Råvara', 'Mängd', '%DRI'];
 
