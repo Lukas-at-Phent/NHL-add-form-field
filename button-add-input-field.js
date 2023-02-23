@@ -15,39 +15,44 @@ const createInputElement = (type, maxlength, placeholder) => {
 
 let ingredientNumber = 2; // initialize the variable to 2
 
-addButton.addEventListener('click', function() {
-  const row = document.createElement('div');
-  row.classList.add('ingredient-row');
+addButton.forEach(button => {
+  button.addEventListener('click', function() {
+    const row = document.createElement('div');
+    row.classList.add('ingredient-row');
 
-  const inputs = [
-    createInputElement('text', '256', placeholders[0]),
-    createInputElement('text', '256', placeholders[1]),
-    createInputElement('text', '256', placeholders[2]),
-    createInputElement('text', '256', placeholders[3]),
-  ];
+    const inputs = [
+      createInputElement('text', '256', placeholders[0]),
+      createInputElement('text', '256', placeholders[1]),
+      createInputElement('text', '256', placeholders[2]),
+      createInputElement('text', '256', placeholders[3]),
+    ];
 
-  const inputWrappers = inputs.map((input) => {
-    const inputWrapper = document.createElement('div');
-    inputWrapper.classList.add('form-field-wrapper');
-    inputWrapper.appendChild(input);
-    return inputWrapper;
+    const inputWrappers = inputs.map((input) => {
+      const inputWrapper = document.createElement('div');
+      inputWrapper.classList.add('form-field-wrapper');
+      inputWrapper.appendChild(input);
+      return inputWrapper;
+    });
+
+    inputWrappers.forEach((inputWrapper) => {
+      row.appendChild(inputWrapper);
+    });
+
+    const ingrediensTextBlock = document.createElement('div');
+    ingrediensTextBlock.classList.add('ingrediens');
+    ingrediensTextBlock.innerText = 'Ingrediens ' + ingredientNumber; // update the text content
+
+    const TextBlockWrapper = document.createElement('div');
+    TextBlockWrapper.classList.add('ingredients-wrapper');
+
+    TextBlockWrapper.appendChild(ingrediensTextBlock)
+    row.appendChild(TextBlockWrapper);
+
+    outerWrapper.forEach((wrapper) => {
+      const clonedRow = row.cloneNode(true);
+      wrapper.appendChild(clonedRow);
+    });
+
+    ingredientNumber++; // increment the variable
   });
-
-  inputWrappers.forEach((inputWrapper) => {
-    row.appendChild(inputWrapper);
-  });
-
-  const ingrediensTextBlock = document.createElement('div');
-  ingrediensTextBlock.classList.add('ingrediens');
-  ingrediensTextBlock.innerText = 'Ingrediens ' + ingredientNumber; // update the text content
-
-  const TextBlockWrapper = document.createElement('div');
-  TextBlockWrapper.classList.add('ingredients-wrapper');
-
-  TextBlockWrapper.appendChild(ingrediensTextBlock)
-  row.appendChild(TextBlockWrapper);
-
-  outerWrapper.appendChild(row);
-
-  ingredientNumber++; // increment the variable
 });
